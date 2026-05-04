@@ -8,6 +8,7 @@
  */
 #include "discover/discover.h"
 #include "discover/userconfig.h"
+#include "foundation/str_util.h"
 #include "cbm.h" // CBMLanguage, CBM_LANG_*
 
 #include "foundation/constants.h"
@@ -823,7 +824,7 @@ CBMLanguage cbm_language_for_extension(const char *ext) {
     }
 
     for (size_t i = 0; i < EXT_TABLE_SIZE; i++) {
-        if (strcmp(EXT_TABLE[i].ext, ext) == 0) {
+        if (cbm_strcasecmp(EXT_TABLE[i].ext, ext) == 0) {
             return EXT_TABLE[i].language;
         }
     }
@@ -837,7 +838,7 @@ CBMLanguage cbm_language_for_filename(const char *filename) {
 
     /* Check special filenames first */
     for (size_t i = 0; i < FILENAME_TABLE_SIZE; i++) {
-        if (strcmp(FILENAME_TABLE[i].filename, filename) == 0) {
+        if (cbm_strcasecmp(FILENAME_TABLE[i].filename, filename) == 0) {
             return FILENAME_TABLE[i].language;
         }
     }

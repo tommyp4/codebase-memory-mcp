@@ -312,3 +312,20 @@ int cbm_json_escape(char *buf, int bufsize, const char *src) {
     buf[pos] = '\0';
     return pos;
 }
+
+int cbm_strcasecmp(const char *s1, const char *s2) {
+    if (!s1 || !s2) {
+        return (s1 == s2) ? 0 : (s1 ? 1 : -1);
+    }
+    while (*s1 && *s2) {
+        unsigned char c1 = (unsigned char)tolower((unsigned char)*s1);
+        unsigned char c2 = (unsigned char)tolower((unsigned char)*s2);
+        if (c1 != c2) {
+            return (int)c1 - (int)c2;
+        }
+        s1++;
+        s2++;
+    }
+    return (int)(unsigned char)tolower((unsigned char)*s1) -
+           (int)(unsigned char)tolower((unsigned char)*s2);
+}

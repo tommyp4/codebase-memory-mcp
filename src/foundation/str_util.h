@@ -76,4 +76,7 @@ bool cbm_validate_shell_arg(const char *s);
  * If buf is too small, output is truncated but always NUL-terminated. */
 int cbm_json_escape(char *buf, int bufsize, const char *src);
 
+/* Case-insensitive string comparison. Returns 0 if equal. */
+int cbm_strcasecmp(const char *s1, const char *s2);
+
 #endif /* CBM_STR_UTIL_H */
